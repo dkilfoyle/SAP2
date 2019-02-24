@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import BitArray from './BitArray'
-import SevenSeg from './SevenSeg'
+import BitArray from '../BitArray'
+import SevenSeg from '../SevenSeg'
 
 export default {
   name: 'OutputRegister',

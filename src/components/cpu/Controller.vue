@@ -42,8 +42,8 @@
 </template>
 
 <script>
-import { convertWordsToBits } from './bitFunctions'
-import BitArray from './BitArray'
+import { convertWordsToBits } from '../bitFunctions'
+import BitArray from '../BitArray'
 export default {
   name: 'Controller',
   props: ['cBus', 'conSignals', 'irBits'],

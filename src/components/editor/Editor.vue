@@ -1,11 +1,11 @@
 <template>
-  <q-page padding>
-    <codemirror v-model="code" :options="cmOptions"></codemirror>
+  <div>
+    <codemirror v-model="sourceCode" :options="cmOptions"></codemirror>
 
-    <div class="row q-gutter-md">
+    <div class="row q-pa-md">
       <q-btn @click="compile">Compile</q-btn>
     </div>
-  </q-page>
+  </div>
 </template>
 
 <script>
@@ -27,11 +27,7 @@ import 'codemirror/addon/fold/foldgutter.css'
 // eslint-disable-next-line no-undef
 var asmParser = require('./asm.pegjs')
 
-// eslint-disable-next-line no-undef
-var exampleCode = require('./example.asm')
-
 import asmMode from './asm-mode.js'
-
 CodeMirror.defineMode('asm', asmMode)
 
 var dictionary = {
@@ -132,7 +128,7 @@ CodeMirror.registerHelper('lint', 'asm', function(text) {
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/base16-dark.css'
 
-import BitArray from '../components/BitArray'
+import BitArray from '../BitArray'
 
 export default {
   // name: 'PageName',
@@ -141,7 +137,7 @@ export default {
   },
   data() {
     return {
-      code: exampleCode,
+      // code: exampleCode,
       cmOptions: {
         tabSize: 2,
         mode: 'asm',
@@ -161,15 +157,25 @@ export default {
       }
     }
   },
+  computed: {
+    sourceCode: {
+      get() {
+        return this.$store.state.code.sourceCode
+      },
+      set(value) {
+        this.$store.commit('code/updateSourceCode', value)
+      }
+    }
+  },
   methods: {
     getOpBitString: function(opcode) {
       switch (opcode.toUpperCase()) {
         case 'LDA':
-          return '0001'
+          return '0000'
         case 'ADD':
-          return '0010'
+          return '0001'
         case 'SUB':
-          return '0011'
+          return '0010'
         case 'OUT':
           return '1110'
         case 'HLT':
@@ -179,8 +185,7 @@ export default {
       }
     },
     compile: function() {
-      var lines = asmParser.parse(this.code)
-      console.log(lines)
+      var lines = asmParser.parse(this.$store.state.code.sourceCode)
       var textBits = new Array()
       var dataBits = new Array()
       lines.forEach(line => {
@@ -197,9 +202,9 @@ export default {
           dataBits.push(opBits)
         }
       })
-      console.log(textBits)
-      console.log(dataBits)
-      // TODO: send textbits and databits to RAMBlock
+      this.$store.commit('code/updateTextBits', textBits)
+      this.$store.commit('code/updateDataBits', dataBits)
+      this.$root.$emit('programRam')
     }
   }
 }

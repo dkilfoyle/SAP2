@@ -20,7 +20,7 @@
 <script>
 import MemoryAddressRegister from './MemoryAddressRegister'
 import RAM from './RAM'
-import BitArray from './BitArray'
+import BitArray from '../BitArray'
 export default {
   name: 'RAMBlock',
   components: { MemoryAddressRegister, RAM },
@@ -32,7 +32,20 @@ export default {
       marBits: new BitArray(4)
     }
   },
+  created: function() {
+    this.$root.$on('programRam', this.programRam)
+  },
   mounted: function() {
+    // this.ramBits[0].set('00001001')
+    // this.ramBits[1].set('00011010')
+    // this.ramBits[2].set('00011011')
+    // this.ramBits[3].set('00101100')
+    // this.ramBits[4].set('11100000')
+    // this.ramBits[5].set('11110000')
+    // this.ramBits[9].set('00010000')
+    // this.ramBits[10].set('00010100')
+    // this.ramBits[11].set('00011000')
+    // this.ramBits[12].set('00100000')
     this.programRam()
   },
   computed: {
@@ -68,16 +81,16 @@ export default {
       this.$emit('pushToBus', payload)
     },
     programRam: function() {
-      this.ramBits[0].set('00001001')
-      this.ramBits[1].set('00011010')
-      this.ramBits[2].set('00011011')
-      this.ramBits[3].set('00101100')
-      this.ramBits[4].set('11100000')
-      this.ramBits[5].set('11110000')
-      this.ramBits[9].set('00010000')
-      this.ramBits[10].set('00010100')
-      this.ramBits[11].set('00011000')
-      this.ramBits[12].set('00100000')
+      if (this.$store.state.code.textBits.length > 9)
+        throw new Error('programRAM: textBits length must be < 10')
+      for (var i = 0; i < this.$store.state.code.textBits.length; i++) {
+        this.ramBits[i].set(this.$store.state.code.textBits[i])
+      }
+      if (this.$store.state.code.dataBits.length > 9)
+        throw new Error('programRAM: dataBits length must be < 10')
+      for (var i = 0; i < this.$store.state.code.dataBits.length; i++) {
+        this.ramBits[9 + i].set(this.$store.state.code.dataBits[i])
+      }
     }
   }
 }

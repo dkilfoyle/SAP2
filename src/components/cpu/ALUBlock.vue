@@ -29,7 +29,7 @@
 import Accumulator from './Accumulator'
 import ALU from './ALU'
 import BRegister from './BRegister'
-import BitArray from './BitArray'
+import BitArray from '../BitArray'
 export default {
   name: 'ALUBlock',
   components: { Accumulator, ALU, BRegister },

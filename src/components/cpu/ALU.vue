@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BitArray from './BitArray'
+import BitArray from '../BitArray'
 export default {
   name: 'ALU',
   props: ['cBus', 'aluBits', 'accBits', 'brBits'],

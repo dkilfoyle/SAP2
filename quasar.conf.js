@@ -41,6 +41,8 @@ module.exports = function(ctx) {
         'QChip',
         'QTabs',
         'QTab',
+        'QTabPanels',
+        'QTabPanel',
         'QRouteTab',
         'QLinearProgress'
       ],

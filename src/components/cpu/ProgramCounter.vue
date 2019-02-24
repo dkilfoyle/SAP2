@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import BitArray from './BitArray'
+import BitArray from '../BitArray'
 
 export default {
   name: 'PC',

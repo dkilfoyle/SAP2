@@ -65,10 +65,11 @@ export default class BitArray {
     return this
   }
   setString(val) {
-    this.bits = val
+    var newBits = val
       .split('')
       .reverse()
       .map(x => parseInt(x))
+    this.bits.splice(0, newBits.length, ...newBits)
     return this
   }
   setArray(val) {

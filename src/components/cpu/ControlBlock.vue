@@ -23,7 +23,7 @@
 <script>
 import InstructionRegister from './InstructionRegister'
 import Controller from './Controller'
-import BitArray from './BitArray'
+import BitArray from '../BitArray'
 
 export default {
   name: 'ControlBlock',
