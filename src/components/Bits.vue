@@ -1,6 +1,10 @@
 <template>
   <div>
-    <q-table :data="bitsTableData" :columns="bitsTableColumns" dense hide-bottom></q-table>
+    <q-table :data="bitsTableData" :columns="bitsTableColumns" dense hide-bottom>
+      <q-td slot="body-cell" slot-scope="props" :props="props">
+        <span style="font-family: courier">{{ props.value }}</span>
+      </q-td>
+    </q-table>
   </div>
 </template>
 
@@ -11,7 +15,7 @@ export default {
   data() {
     return {
       allColumns: [
-        { name: 'rowname', label: '', field: 'rowname' },
+        { name: 'rowname', label: '', field: 'rowname', align: 'left' },
         { name: 'bits', label: 'Bits', field: 'bits' },
         { name: 'dec', label: 'Dec', field: 'dec' },
         { name: 'hex', label: 'Hex', field: 'hex' }
@@ -41,7 +45,7 @@ export default {
       var x = {}
       x.bits = this.bitArray.toString(2)
       x.dec = this.bitArray.toString(10)
-      x.hex = this.bitArray.toString(16)
+      x.hex = this.bitArray.toString(16).toUpperCase()
       if (this.precalculated !== undefined) {
         x[this.precalculated.label] = this.precalculated.value
       }

@@ -1,7 +1,7 @@
 <template>
   <q-card :color="isActive ? 'grey-2' : 'white'" text-color="black">
     <q-card-section>
-      <span>Output</span>
+      <span class="text-h6">Output</span>
       <!-- <block-title title="Output" :message="message" :value="outBits.asInteger()"/> -->
       <seven-seg :value="outBits.toString(10)" />
     </q-card-section>
@@ -51,6 +51,11 @@ export default {
     // eslint-disable-next-line no-unused-vars
     'cBus.CLK': function(newCLK, oldCLK) {
       if (newCLK === 1 && this.cBus.Lo === 0) this.outBits.set(this.busBits)
+    }
+  },
+  methods: {
+    reset: function() {
+      this.outBits.set(0)
     }
   }
 }

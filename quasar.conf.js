@@ -44,7 +44,8 @@ module.exports = function(ctx) {
         'QTabPanels',
         'QTabPanel',
         'QRouteTab',
-        'QLinearProgress'
+        'QLinearProgress',
+        'QAvatar'
       ],
 
       directives: ['Ripple'],

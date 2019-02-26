@@ -70,6 +70,7 @@ export default {
     reset: function() {
       this.ramBits.map(x => x.set(0))
       this.marBits.set(0)
+      this.programRam()
     },
     loadBusToMar: function() {
       // console.log("RAMBlock: loadBusToMar: ", this.busBits);

@@ -36,7 +36,7 @@
       ></q-btn>
       <q-btn @click="play" :disable="halted" color="secondary" icon="play_arrow"></q-btn>
       <q-btn @click="pause" :disable="halted" color="secondary" icon="pause"></q-btn>
-      <q-btn @click="$parent.emit('reset')" color="secondary" icon="replay"></q-btn>
+      <q-btn @click="$parent.$emit('reset')" color="secondary" icon="replay"></q-btn>
     </q-card-actions>
   </q-card>
 </template>
@@ -105,7 +105,7 @@ export default {
     },
     ringTableColumns: function() {
       return [
-        { name: 'tstate', label: '', field: 'tstate' },
+        { name: 'tstate', label: '', field: 'tstate', align: 'left' },
         { name: 'bits', label: 'Bits', field: 'bits' },
         { name: 't', label: 'T', field: 't' },
         { name: 'descr', label: 'Descr', field: 'descr' }
@@ -123,7 +123,7 @@ export default {
     },
     muinsTableColumns: function() {
       return [
-        { name: 'ins', label: 'Ins', field: 'ins' },
+        { name: 'ins', label: 'Ins', field: 'ins', align: 'left' },
         { name: 'muins', label: 'MuIns', field: 'muins' },
         { name: 'descr', label: 'Descr', field: 'descr' }
       ]
@@ -146,6 +146,7 @@ export default {
       }
     },
     microInstruction: function() {
+      if (this.microInstruction === undefined) return
       let cBusBits = convertWordsToBits(this.microInstruction)
         .split('')
         .map(x => parseInt(x))

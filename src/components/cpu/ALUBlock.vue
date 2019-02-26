@@ -72,6 +72,11 @@ export default {
     },
     pushACCToBus() {
       this.$emit('pushToBus', this.accBits)
+    },
+    reset() {
+      this.brBits.set(0)
+      this.accBits.set(0)
+      this.aluBits.set(0)
     }
   }
 }

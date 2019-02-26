@@ -2,9 +2,17 @@
   <div>
     <q-table :data="sigTableData" :columns="sigTableColumns" dense hide-bottom>
       <q-td slot="body-cell" slot-scope="props" :props="props">
-        <q-chip dense :color="isActive(props.col.name) ? 'negative' : 'light'">{{
-          props.value
-        }}</q-chip>
+        <q-avatar
+          v-if="isActive(props.col.name)"
+          dense
+          color="red"
+          text-color="white"
+          size="24px"
+          >{{ props.value }}</q-avatar
+        >
+        <q-avatar v-else dense color="blue-grey-4" size="24px">
+          {{ props.value }}
+        </q-avatar>
       </q-td>
     </q-table>
   </div>

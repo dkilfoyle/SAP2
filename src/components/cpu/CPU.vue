@@ -137,9 +137,9 @@ export default {
   methods: {
     reset: function() {
       this.busBits = new BitArray(8)
-      this.CLK = 0
+      this.CLK = 1
       this.CLR = 0
-      this.CLKi = 1
+      this.CLKi = 0
       this.CLRi = 1
       this.Cp = 0
       this.Ep = 0
