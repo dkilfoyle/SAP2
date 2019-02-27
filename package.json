@@ -1,10 +1,10 @@
 {
-  "name": "testprettier",
+  "name": "sap2",
   "version": "0.0.1",
   "description": "A Quasar Framework app",
   "productName": "Quasar App",
   "cordovaId": "org.cordova.quasar.app",
-  "author": "dkilfoyle <dkilfoyle@xtra.co.nz>",
+  "author": "dk",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
