@@ -25,9 +25,25 @@
         <editor></editor>
       </q-tab-panel>
 
-      <q-tab-panel name="help"
-        >Lorem ipsum dolor sit amet consectetur adipisicing elit.</q-tab-panel
-      >
+      <q-tab-panel name="help">
+        <p>Simple as Possible Computer: From Digital Computer Electronics by Albert Malvino.</p>
+        <q-markup-table>
+          <tbody>
+            <tr>
+              <td>Program Counter</td>
+              <td>4 bits (0 to 15)</td>
+            </tr>
+            <tr>
+              <td>W Bus</td>
+              <td>8 bits</td>
+            </tr>
+            <tr>
+              <td>Memory</td>
+              <td>16 * 8 bits</td>
+            </tr>
+          </tbody>
+        </q-markup-table>
+      </q-tab-panel>
     </q-tab-panels>
   </q-page>
 </template>

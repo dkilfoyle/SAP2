@@ -6,7 +6,7 @@
           <q-icon name="menu" />
         </q-btn>
 
-        <q-toolbar-title>SAP 2</q-toolbar-title>
+        <q-toolbar-title>SAP 1</q-toolbar-title>
 
         <!-- <q-btn flat round dense icon="computer" @click="$router.push({ name: 'computer' })" />
         <q-btn flat round dense icon="notes" @click="$router.push({ name: 'code' })" />-->
